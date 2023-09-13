@@ -112,6 +112,7 @@ export class CustomerService {
   async logout(userId: string): Promise<Boolean> {
       const customer = await this.findById(userId);
       customer.refreshToken = null;
+      customer.accessToken = null;
       await this.updateCustomer(userId, customer);
       return true;
   }
